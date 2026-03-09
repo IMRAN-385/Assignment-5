@@ -349,7 +349,7 @@ detailBox.innerHTML=`
         <p class="border-amber-50 m-5 text-white pl-5 py-1 bg-green-600 rounded-2xl w-25 ">Opened</p>
         <ul class="list-disc flex gap-10">
           <li>
-            Opened by Fahim Ahmed
+            Opened by ${issue.assignee}
           </li>
           <li>
             22/02/2026
@@ -368,7 +368,7 @@ detailBox.innerHTML=`
       <div class="flex justify-between px-5 py-5 shadow">
         <div>
         <p>Assignee :</p>
-        <h3>Fahim Ahmed</h3>
+        <h3>${issue.assignee}</h3>
       </div>
       <div>
         <p>
