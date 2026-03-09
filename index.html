@@ -11,9 +11,39 @@
   <title>Github Issues Tracker</title>
 </head>
 <body class="geist">
+
+  <section class="w-full flex justify-center" id="loginSection">
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 shadow">
+  <legend class="fieldset-legend inline items-center text-center pt-50"><img class="pl-9 h-18 w-27" src="./B13-A5-Github-Issue-Tracker/assets/github-logo.png" alt="">GitHub Issue Tracker
+  <p>Sign in to manage your issues</p></legend>
+
+  <label class="label font-medium">Username</label>
+  <input type="text" class="input" placeholder="Enter Username" id="userName" />
+
+  <label class="label font-medium">Password</label>
+  <input type="password" class="input" placeholder="Enter Password" id="password" />
+
+  <button id="login" class="btn btn-primary mt-4">SIgn In</button>
+  <div class="flex  items-center px-5 my-3">
+    <div class="flex-grow border-t border-gray-400"></div>
+  <span class=" font-medium px-1">OR</span>
+  <div class="flex-grow border-t border-gray-400"></div>
+</div>
+  <div>
+    <p class="text-center">Demo Credentials:</p>
+  </div>
+  <div class="rounded-lg shadow h-20 text-center pt-4">
+    <p><span class="font-bold">Username:</span> admin</p>
+    <p><span class="font-bold">Password:</span> admin123</p>
+  </div>
+</fieldset>
+
+  </section>
+<section id="main-page" class="">
+  
   <section class="border-y-2 shadow-2xl rounded-xs border-gray-300">
     <div class="flex justify-between mt-5 mb-5">
-      <nav class="flex ml-15 gap-1">
+      <nav class="flex ml-15 gap-1"id="loginPage">
           <img class=" w-8 h-8" src="./B13-A5-Github-Issue-Tracker/assets/github-logo.png" alt="">
         <h2 class="font-semibold text-2xl">GitHub Issues Tracker</h2>
       </nav>
@@ -53,7 +83,7 @@
     </div>
   </section>
 
-  <section class="py-10 my-4 mx-35 grid grid-cols-4 sm:grid-cols-1 lg:grid-cols-4 px-5 rounded-2xl shadow-2xl allcard">
+  <section class="py-10 my-4 mx-35 grid grid-cols-4 sm:grid-cols-1 lg:grid-cols-4 px-5 rounded-2xl shadow-2xl allcard " id="cls" >
     <!-- <div class=" border-t-5 border-green-600 rounded-lg shadow-2xl ">
       <div class="flex justify-between">
         <img class="m-5 h-8 w-8" src="./B13-A5-Github-Issue-Tracker/assets/Open-Status.png" alt="">
@@ -116,6 +146,7 @@
     </div>
   </div>
 </dialog>
+</section>
 
 
 

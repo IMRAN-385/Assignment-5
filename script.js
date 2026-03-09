@@ -298,27 +298,30 @@ function renderJobs (){
 
 
 
+  
+
     section.className = "mb-10";
     let statusClass = "btn-soft btn-primary";
     if (issue.Priority === "OPENED") statusClass = "btn-success text-white";
     section.innerHTML =`
-    <div class="w-70  border-t-5 border-${borderColor}-600 rounded-lg shadow-2xl sm:ml-20 lg:m-auto "  onclick="loadIssueDetail(${issue.id})">
+    
+    <div class="w-70 h-95 border-t-5 border-${borderColor}-600 rounded-lg shadow-2xl sm:ml-20 lg:m-auto "  onclick="loadIssueDetail(${issue.id})">
       <div class="flex justify-between mt-4 mr-3 "><img class=" ml-5 h-8 w-8" src="${icon}">
         <p class="px-6 py-1  rounded-2xl text-${color}-600 bg-${color}-200 border-2  border-${color}-400">${issue.Priority}</p>
 
       </div>
       <div>
-        <h2 class="font-bold text-xl px-5">${issue.title}</h2>
-        <p class="text-gray-400 px-5">(${issue.description})</p>
+        <h2 class="font-bold text-xl px-5 pb-5">${issue.title}</h2>
+        <p class="text-gray-400 px-5 h-30">(${issue.description})</p>
       </div>
-      <div class="px-5 py-4 border-b-2 border-gray-300">
+      <div class="px-5 py-">
         ${issue.labels.map(label => 
-  `<button class="px-3.5 rounded-xl text-${label.color}-600 bg-${label.color}-200 border-2 border-${label.color}-400 mr-2">
+  `<button class="px-3.5 gap-1 rounded-xl text-${label.color}-600 bg-${label.color}-200 border-2 border-${label.color}-400 mr-2">
      ${label.name}
    </button>`).join(' ')}
       </div>
-      <div class="p-5  text-gray-500">
-        <p class="mb-2">${issue.assignee}</p>
+      <div class="p-5  text-gray-500 ">
+        <p class="mb-2 ">${issue.assignee}</p>
         <p>${issue.date}</p>
       </div>
     </div>
@@ -405,4 +408,66 @@ CSSContainerRule.innerHTML="";
   renderJobs();
   updateCounts();
 }
-init();
+
+
+async function fetchAndRender() {
+  try {
+    const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+    const json = await res.json();
+    const issuesFromAPI = json.data;
+
+    issue = issuesFromAPI.map(item => ({
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      Priority: item.priority.toUpperCase(),
+      assignee: item.assignee || "Unassigned",
+      date: new Date(item.createdAt).toLocaleDateString(),
+      labels: item.labels.map(name => ({
+        name: name.toUpperCase(),
+        color: name.includes("bug") ? "red" : "green"
+      })),
+      icon: item.status === "open"
+        ? "./B13-A5-Github-Issue-Tracker/assets/Open-Status.png"
+        : "./B13-A5-Github-Issue-Tracker/assets/Closed- Status .png"
+    }));
+
+    renderJobs();
+    updateCounts();
+
+  } catch (err) {
+    console.error("Error fetching issues:", err);
+  }
+}
+function init(){
+  fetchAndRender();
+}
+
+const userInput = document.getElementById("userName");
+const passInput = document.getElementById("password");
+const loginBtn =  document.getElementById("login");
+
+const mainPage = document.getElementById("main-page");
+const loginform = document.getElementById("loginSection");
+
+const validUser = {
+  username : "admin",
+  password : "admin123"
+};
+
+loginBtn.addEventListener("click",()=>{
+  const username = userInput.value.trim();
+  const password =  passInput.value.trim();
+
+
+  if (username=== validUser.username && password === validUser.password){
+    loginform.classList.add("hidden");
+    mainPage.classList.remove("hidden");
+  }
+  else{
+    alert("Invalid Password")
+  }
+}
+)
+
+init()
