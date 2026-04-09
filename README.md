@@ -8,7 +8,8 @@ It provides a clean, responsive grid interface to view, filter, and track projec
 
 Built as a static frontend project, it demonstrates modern UI/UX practices with smooth visuals and intuitive navigation.
 
-**Live Demo:** [https://idyllic-blancmange-922f28.netlify.app](https://idyllic-blancmange-922f28.netlify.app)
+**Live Demo:**
+https://git-hub-issue-tracker-a5.vercel.app/
 
 ---
 
